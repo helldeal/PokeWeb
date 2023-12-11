@@ -18,27 +18,35 @@ function PokemonListItem({ pokemon }: any) {
     fetchDetails();
   }, [pokemon]);
 
-  if (!pokemonDetails||pokemonDetails.sprites.front_default==undefined) {
+  if (!pokemonDetails || pokemonDetails.sprites.front_default == undefined) {
     return null;
   }
   return (
-    <div className=" w-1/4">
-      <div className="pokemonItemCard">
-        <div className="flex items-center justify-center">
-          <Link to={`/PokeWeb/pokemon/${pokemonDetails.id}`}>
-          <img
-            src={pokemonDetails.sprites.front_default}
-            alt={pokemonDetails.name}
-          /></Link>
+    <div className=" w-1/4 fit">
+      <Link to={`/PokeWeb/pokemon/${pokemonDetails.id}`}>
+        <div className="pokemonItemCard">
+          <div className="flex items-center justify-center">
+            <img
+              src={pokemonDetails.sprites.front_default}
+              alt={pokemonDetails.name}
+            />
+          </div>
+          <div className="text-center">{pokemonDetails.id}</div>
+          <div className="text-center">{pokemonDetails.name}</div>
+          <div className="items-center justify-around">
+            {pokemonDetails.types.map((type: any) => (
+              <img
+                src={`https://play.pokemonshowdown.com/sprites/types/${
+                  type.type.name.charAt(0).toUpperCase() +
+                  type.type.name.slice(1)
+                }.png`}
+                alt={type.type.name}
+                key={type.type.name}
+              />
+            ))}
+          </div>
         </div>
-        <div className="text-center">
-          <Link to={`/PokeWeb/pokemon/${pokemonDetails.id}`}>{pokemonDetails.name}</Link>
-        </div>
-        <div className="items-center justify-around">
-          {pokemonDetails.types.map((type: any) => <img src={`https://play.pokemonshowdown.com/sprites/types/${ type.type.name.charAt(0).toUpperCase()+type.type.name.slice(1) }.png`} alt={type.type.name} key={type.type.name}/>)}
-        </div>
-        <div className="text-center">{pokemonDetails.id}</div>
-      </div>
+      </Link>
     </div>
   );
 }

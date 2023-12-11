@@ -26,7 +26,7 @@ function PokemonDetail() {
   }
 
   return (
-    <div className="pokemon-details max-w-md mx-auto mt-8 p-4 border rounded-lg shadow-md bg-white">
+    <div className="pokemon-details max-w-md mx-auto mt-8 p-4 border rounded-lg shadow-md bg-blue-950">
       <h1 className="text-3xl font-semibold mb-4">{pokemonDetails.name}</h1>
       <img
         src={pokemonDetails.sprites.front_default}

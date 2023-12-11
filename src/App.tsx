@@ -29,7 +29,7 @@ function App() {
   }, [search]);
   return (
     <div className="py-10">
-      <div className=" p-4 flex flex-col justify-center items-center gap-4">
+      <div className=" p-4 flex flex-col justify-center items-center gap-10">
         <h1 className="text-3xl font-bold text-center">PokéWeb</h1>
         <input
           className="w-full lg:w-80 px-4 py-2 text-sm text-center border rounded-full shadow-xl border-slate-200 focus:outline-none focus:ring focus:border-blue-300 text-black"
@@ -38,7 +38,7 @@ function App() {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap w-full">
           {pokemonData ? (
             pokemonData.length > 0 ? (
               pokemonData.map((pokemon: any, index: number) => (
