@@ -4,3 +4,9 @@
   padding: 2rem;
   text-align: center;
 }
+
+td{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
