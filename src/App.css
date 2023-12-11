@@ -6,7 +6,8 @@
 }
 
 body{ 
-  background-image:url("public/bg.jpg");
+  background-image:url("bg.jpg");
+  background-color: #0a141e;
   background-origin: border-box;
   background-repeat: no-repeat;
   background-attachment: fixed;
