@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { fetchPokemonDataById } from "../dao/pokeAPI";
+import { Link } from "react-router-dom";
 
-function PokemonListItem({ pokemon }:any) {
+function PokemonListItem({ pokemon }: any) {
   const [pokemonDetails, setPokemonDetails] = useState<any>(null);
-
 
   useEffect(() => {
     async function fetchDetails() {
@@ -16,23 +16,32 @@ function PokemonListItem({ pokemon }:any) {
     }
 
     fetchDetails();
-  }, [pokemon]); 
-  
+  }, [pokemon]);
+
   if (!pokemonDetails) {
-    return null
+    return null;
   }
   return (
     <tr>
-        <td className="flex items-center justify-center"><img src={pokemonDetails.sprites.front_default} alt={pokemonDetails.name} /></td>
-        <td className="text-center">{pokemonDetails.name}</td>
-        <td className="text-center">{pokemonDetails.types.map((type:any)=>type.type.name+' ')}</td>
-        <td className="text-center">{pokemonDetails.id}</td>
-        <td className="text-center">{pokemonDetails.stats[0].base_stat}</td>
-        <td className="text-center">{pokemonDetails.stats[1].base_stat}</td>
-        <td className="text-center">{pokemonDetails.stats[2].base_stat}</td>
-        <td className="text-center">{pokemonDetails.stats[3].base_stat}</td>
-        <td className="text-center">{pokemonDetails.stats[4].base_stat}</td>
-        <td className="text-center">{pokemonDetails.stats[5].base_stat}</td>
+      <td className="flex items-center justify-center">
+        <img
+          src={pokemonDetails.sprites.front_default}
+          alt={pokemonDetails.name}
+        />
+      </td>
+      <td className="text-center">
+        <Link to={`/pokemon/${pokemonDetails.id}`}>{pokemonDetails.name}</Link>
+      </td>
+      <td className="text-center">
+        {pokemonDetails.types.map((type: any) => type.type.name + " ")}
+      </td>
+      <td className="text-center">{pokemonDetails.id}</td>
+      <td className="text-center">{pokemonDetails.stats[0].base_stat}</td>
+      <td className="text-center">{pokemonDetails.stats[1].base_stat}</td>
+      <td className="text-center">{pokemonDetails.stats[2].base_stat}</td>
+      <td className="text-center">{pokemonDetails.stats[3].base_stat}</td>
+      <td className="text-center">{pokemonDetails.stats[4].base_stat}</td>
+      <td className="text-center">{pokemonDetails.stats[5].base_stat}</td>
     </tr>
   );
 }
