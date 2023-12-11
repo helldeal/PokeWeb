@@ -18,16 +18,17 @@ function PokemonListItem({ pokemon }: any) {
     fetchDetails();
   }, [pokemon]);
 
-  if (!pokemonDetails) {
+  if (!pokemonDetails||pokemonDetails.sprites.front_default==undefined) {
     return null;
   }
   return (
     <tr>
       <td className="flex items-center justify-center">
+        <Link to={`/pokemon/${pokemonDetails.id}`}>
         <img
           src={pokemonDetails.sprites.front_default}
           alt={pokemonDetails.name}
-        />
+        /></Link>
       </td>
       <td className="text-center">
         <Link to={`/pokemon/${pokemonDetails.id}`}>{pokemonDetails.name}</Link>

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { pokeAll } from "./dao/pokeAPI";
 import PokemonListItem from "./component/PokemonItemList";
 import { searchPokemons } from "./dao/Search";
+import './App.css'
 
 function App() {
   const [pokemonData, setPokemonData] = useState<any>(null);
@@ -17,7 +18,7 @@ function App() {
     if (search == "") setPokemonData(pokeAll.slice(0, 20));
   }, [search]);
   return (
-      <div className="bg-gray-100 min-h-screen py-10">
+      <div className="bg-gray-100 py-10 rounded-2xl">
         <div className=" mx-40 p-4 flex flex-col justify-center items-center gap-4">
           <h1 className="text-3xl font-bold text-center">PokéWeb</h1>
           <input
