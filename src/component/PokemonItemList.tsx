@@ -22,28 +22,24 @@ function PokemonListItem({ pokemon }: any) {
     return null;
   }
   return (
-    <tr>
-      <td className="flex items-center justify-center">
-        <Link to={`/PokeWeb/pokemon/${pokemonDetails.id}`}>
-        <img
-          src={pokemonDetails.sprites.front_default}
-          alt={pokemonDetails.name}
-        /></Link>
-      </td>
-      <td className="text-center">
-        <Link to={`/PokeWeb/pokemon/${pokemonDetails.id}`}>{pokemonDetails.name}</Link>
-      </td>
-      <td className="text-center">
-        {pokemonDetails.types.map((type: any) => type.type.name + " ")}
-      </td>
-      <td className="text-center">{pokemonDetails.id}</td>
-      <td className="text-center">{pokemonDetails.stats[0].base_stat}</td>
-      <td className="text-center">{pokemonDetails.stats[1].base_stat}</td>
-      <td className="text-center">{pokemonDetails.stats[2].base_stat}</td>
-      <td className="text-center">{pokemonDetails.stats[3].base_stat}</td>
-      <td className="text-center">{pokemonDetails.stats[4].base_stat}</td>
-      <td className="text-center">{pokemonDetails.stats[5].base_stat}</td>
-    </tr>
+    <div className=" w-1/4">
+      <div className="pokemonItemCard">
+        <div className="flex items-center justify-center">
+          <Link to={`/PokeWeb/pokemon/${pokemonDetails.id}`}>
+          <img
+            src={pokemonDetails.sprites.front_default}
+            alt={pokemonDetails.name}
+          /></Link>
+        </div>
+        <div className="text-center">
+          <Link to={`/PokeWeb/pokemon/${pokemonDetails.id}`}>{pokemonDetails.name}</Link>
+        </div>
+        <div className="items-center justify-around">
+          {pokemonDetails.types.map((type: any) => <img src={`https://play.pokemonshowdown.com/sprites/types/${ type.type.name.charAt(0).toUpperCase()+type.type.name.slice(1) }.png`} alt={type.type.name} key={type.type.name}/>)}
+        </div>
+        <div className="text-center">{pokemonDetails.id}</div>
+      </div>
+    </div>
   );
 }
 

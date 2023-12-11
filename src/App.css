@@ -2,4 +2,21 @@
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
+  color: white;
+}
+
+body{ 
+  background-image:url("src/assets/bg.jpg");
+  background-origin: border-box;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.pokemonItemCard{
+  background: transparent url(https://sg.portal-pokemon.com/play/resources/pokedex/img/list_pokemon_bg.png) 50% 50% no-repeat;
+  background-size: auto;
+  background-size: auto 100%;    
+  width: 100%;  
+  position: relative;
 }

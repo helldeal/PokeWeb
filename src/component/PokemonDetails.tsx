@@ -11,6 +11,7 @@ function PokemonDetail() {
     async function fetchDetails() {
       try {
         const details = await fetchPokemonDataById(pokemonId);
+        console.log(details)
         setPokemonDetails(details);
       } catch (error) {
         console.error(`Error fetching details for ${pokemonId}:`, error);
@@ -39,9 +40,6 @@ function PokemonDetail() {
       <p className="text-lg">Base Experience: {pokemonDetails.base_experience}</p>
       <p className="text-lg">Species: {pokemonDetails.species.name}</p>
       <p className="text-lg">ID: {pokemonDetails.id}</p>
-      <p className="text-lg">Order: {pokemonDetails.order}</p>
-      <p className="text-lg">Is Default: {pokemonDetails.is_default.toString()}</p>
-      <p className="text-lg">Held Items: {pokemonDetails.held_items.map((item:any) => item.item.name).join(', ')}</p>
       <p className="text-lg">Stats:</p>
       <ul className="list-disc ml-6">
         {pokemonDetails.stats.map((stat:any) => (
