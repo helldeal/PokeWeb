@@ -1,7 +1,7 @@
 // PokemonDetail.js
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { fetchPokemonDataById, pokeAll } from "../dao/pokeAPI";
+import { fetchPokemonDataById } from "../dao/pokeAPI";
 
 function PokemonDetail() {
   const { pokemonId } = useParams();
@@ -9,12 +9,11 @@ function PokemonDetail() {
 
   useEffect(() => {
     async function fetchDetails() {
-        const pokemon=pokeAll[Number(pokemonId)-1]
       try {
-        const details = await fetchPokemonDataById(pokemon.url);
+        const details = await fetchPokemonDataById(pokemonId);
         setPokemonDetails(details);
       } catch (error) {
-        console.error(`Error fetching details for ${pokemon.name}:`, error);
+        console.error(`Error fetching details for ${pokemonId}:`, error);
       }
     }
 

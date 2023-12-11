@@ -1,5 +1,3 @@
-import { pokeAll } from "./pokeAPI";
-
 function findMostAccuratePokemons(pokemons: any[], search: string) {
     const scores = pokemons.map((pokemon) => {
       const name = pokemon.name.toLowerCase();
@@ -27,8 +25,7 @@ function findMostAccuratePokemons(pokemons: any[], search: string) {
     return sortedPokemons.filter(pokemon=>pokemon.score>0)
   }
   
-  export function searchPokemons(inputText: string, maxResults = 50) {
-    const pokemons = pokeAll;
-    // Calcul de la distance pour chaque médicament et tri par proximité
+  export function searchPokemons(pokemons:any,inputText: string, maxResults = 20) {
+    if(inputText=="")return pokemons.slice(0,maxResults)
     return findMostAccuratePokemons(pokemons, inputText).slice(0, maxResults);
   }

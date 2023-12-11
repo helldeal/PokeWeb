@@ -7,11 +7,11 @@ import PokemonDetail from './component/PokemonDetails.tsx'
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/PokeWeb/",
     element: <App/>,
   },
   {
-    path: "/pokemon/:pokemonId",
+    path: "/PokeWeb/pokemon/:pokemonId",
     element: <PokemonDetail/>,
   },
 ]);

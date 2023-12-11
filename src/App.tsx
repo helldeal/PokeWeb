@@ -1,21 +1,31 @@
 import { useState, useEffect } from "react";
-import { pokeAll } from "./dao/pokeAPI";
+import { fetchPokemonData } from "./dao/pokeAPI";
 import PokemonListItem from "./component/PokemonItemList";
 import { searchPokemons } from "./dao/Search";
 import './App.css'
 
 function App() {
+  const [allPokemonData, setAllPokemonData] = useState<any>([]);
   const [pokemonData, setPokemonData] = useState<any>(null);
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    setPokemonData(pokeAll.slice(0, 20));
+    async function fetchData() {
+      try {
+        const data = await fetchPokemonData();
+        setPokemonData(data.slice(0,20));
+        setAllPokemonData(data);
+      } catch (error) {
+        console.error(`Error fetching details for pokemons:`, error);
+      }
+    }
+
+    fetchData();
   }, []);
 
   useEffect(() => {
-    const newData = searchPokemons(search);
+    const newData = searchPokemons(allPokemonData,search);
     setPokemonData(newData);
-    if (search == "") setPokemonData(pokeAll.slice(0, 20));
   }, [search]);
   return (
       <div className="bg-gray-100 py-10 rounded-2xl">

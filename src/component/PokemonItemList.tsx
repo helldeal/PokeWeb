@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchPokemonDataById } from "../dao/pokeAPI";
+import { fetchPokemonDataByUrl } from "../dao/pokeAPI";
 import { Link } from "react-router-dom";
 
 function PokemonListItem({ pokemon }: any) {
@@ -8,7 +8,7 @@ function PokemonListItem({ pokemon }: any) {
   useEffect(() => {
     async function fetchDetails() {
       try {
-        const details = await fetchPokemonDataById(pokemon.url);
+        const details = await fetchPokemonDataByUrl(pokemon.url);
         setPokemonDetails(details);
       } catch (error) {
         console.error(`Error fetching details for ${pokemon.name}:`, error);
@@ -24,14 +24,14 @@ function PokemonListItem({ pokemon }: any) {
   return (
     <tr>
       <td className="flex items-center justify-center">
-        <Link to={`/pokemon/${pokemonDetails.id}`}>
+        <Link to={`/PokeWeb/pokemon/${pokemonDetails.id}`}>
         <img
           src={pokemonDetails.sprites.front_default}
           alt={pokemonDetails.name}
         /></Link>
       </td>
       <td className="text-center">
-        <Link to={`/pokemon/${pokemonDetails.id}`}>{pokemonDetails.name}</Link>
+        <Link to={`/PokeWeb/pokemon/${pokemonDetails.id}`}>{pokemonDetails.name}</Link>
       </td>
       <td className="text-center">
         {pokemonDetails.types.map((type: any) => type.type.name + " ")}
