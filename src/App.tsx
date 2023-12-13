@@ -38,7 +38,7 @@ function App() {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-        <div className="flex flex-wrap w-full">
+        <div className="flex flex-wrap w-full justify-center">
           {pokemonData ? (
             pokemonData.length > 0 ? (
               pokemonData.map((pokemon: any, index: number) => (

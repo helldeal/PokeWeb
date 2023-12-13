@@ -22,7 +22,7 @@ function PokemonListItem({ pokemon }: any) {
     return null;
   }
   return (
-    <div className=" w-1/4 fit">
+    <div className=" w-[296px] fit">
       <Link to={`/PokeWeb/pokemon/${pokemonDetails.id}`}>
         <div className="pokemonItemCard">
           <div className="flex items-center justify-center">
